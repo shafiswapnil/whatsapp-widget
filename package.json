@@ -2,11 +2,19 @@
   "name": "whatsapp-chat-widget",
   "version": "1.0.0",
   "description": "A customizable WhatsApp chat widget for websites",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "build:package": "tsup src/index.tsx --format cjs,esm --dts --external react",
+    "prepublishOnly": "npm run build:package"
   },
   "keywords": [
     "whatsapp",
@@ -38,6 +46,11 @@
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
+    "tsup": "^8.4.0",
     "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

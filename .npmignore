@@ -1,0 +1,13 @@
+app/
+components/
+public/
+.next/
+node_modules/
+*.log
+.git/
+.gitignore
+.env*
+tsconfig.json
+tailwind.config.js
+postcss.config.js
+next.config.mjs
