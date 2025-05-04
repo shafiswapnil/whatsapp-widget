@@ -22,16 +22,23 @@ export default function WhatsAppWidget({
   placeholder = "Type a message...",
 }: WhatsAppWidgetProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const [inputText, setInputText] = useState("")
 
   const handleSendMessage = () => {
     // Format phone number (remove any non-digit characters)
     const formattedPhone = phoneNumber.replace(/\D/g, "")
 
-    // Create WhatsApp URL with phone number and pre-filled message
-    const whatsappUrl = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(welcomeMessage)}`
+    // Determine message based on input
+    const messageToSend = inputText.trim() ? `I want to know: ${inputText}` : welcomeMessage
+
+    // Create WhatsApp URL with phone number and message
+    const whatsappUrl = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(messageToSend)}`
 
     // Open WhatsApp in a new tab
     window.open(whatsappUrl, "_blank")
+
+    // Clear the input after sending
+    setInputText("")
   }
 
   return (
@@ -69,6 +76,8 @@ export default function WhatsAppWidget({
             <input
               type="text"
               placeholder={placeholder}
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
               className="flex-1 py-2 px-3 rounded-full text-sm border border-gray-300 focus:outline-none focus:border-[#25d366]"
             />
             <button onClick={handleSendMessage} className="bg-[#25d366] text-white p-2 rounded-full hover:bg-[#1da851]">
