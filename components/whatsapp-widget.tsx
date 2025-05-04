@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
 import { MessageCircle, Send, X } from "lucide-react"
 import Image from "next/image"
@@ -41,10 +43,16 @@ export default function WhatsAppWidget({
     setInputText("")
   }
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSendMessage()
+    }
+  }
+
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end">
       {isOpen && (
-        <div className="mb-4 w-[330px] rounded-lg shadow-lg bg-white overflow-hidden">
+        <div className="mb-4 w-[330px] max-w-[calc(100vw-32px)] rounded-lg shadow-lg bg-white overflow-hidden">
           {/* Header */}
           <div className="bg-[#075e54] text-white p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -62,7 +70,7 @@ export default function WhatsAppWidget({
           </div>
 
           {/* Chat area */}
-          <div className="bg-[#e4e1de] p-4 h-[250px] flex flex-col">
+          <div className="bg-[#e4e1de] p-4 md:h-[250px] h-[200px] flex flex-col">
             <div className="bg-white rounded-lg p-3 max-w-[80%] shadow-sm ml-auto mr-0 mb-auto">
               <p className="text-sm">{welcomeMessage}</p>
               <span className="text-[10px] text-gray-500 flex justify-end mt-1">
@@ -72,15 +80,19 @@ export default function WhatsAppWidget({
           </div>
 
           {/* Footer */}
-          <div className="p-3 bg-[#f0f0f0] flex items-center gap-2">
+          <div className="p-2 sm:p-3 bg-[#f0f0f0] flex items-center gap-2">
             <input
               type="text"
               placeholder={placeholder}
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
-              className="flex-1 py-2 px-3 rounded-full text-sm border border-gray-300 focus:outline-none focus:border-[#25d366]"
+              onKeyPress={handleKeyPress}
+              className="flex-1 py-2 px-3 text-sm rounded-full border border-gray-300 focus:outline-none focus:border-[#25d366]"
             />
-            <button onClick={handleSendMessage} className="bg-[#25d366] text-white p-2 rounded-full hover:bg-[#1da851]">
+            <button
+              onClick={handleSendMessage}
+              className="bg-[#25d366] text-white p-2 rounded-full hover:bg-[#1da851] flex-shrink-0"
+            >
               <Send size={18} />
             </button>
           </div>
@@ -90,7 +102,8 @@ export default function WhatsAppWidget({
       {/* Floating button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="bg-[#25d366] text-white p-4 rounded-full shadow-lg hover:bg-[#1da851] transition-all"
+        className="bg-[#25d366] text-white p-3 sm:p-4 rounded-full shadow-lg hover:bg-[#1da851] transition-all"
+        aria-label={isOpen ? "Close chat" : "Open chat"}
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
       </button>
