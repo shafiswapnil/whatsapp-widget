@@ -7,7 +7,9 @@ interface WhatsAppWidgetProps {
     position?: string;
     welcomeMessage?: string;
     placeholder?: string;
+    buttonColor?: string;
+    widgetPosition?: 'left' | 'right';
 }
-declare function WhatsAppWidget({ phoneNumber, avatar, name, position, welcomeMessage, placeholder, }: WhatsAppWidgetProps): React.JSX.Element;
+declare const WhatsAppWidget: ({ phoneNumber, avatar, name, position, welcomeMessage, placeholder, buttonColor, widgetPosition, }: WhatsAppWidgetProps) => React.JSX.Element;
 
-export { WhatsAppWidget };
+export { type WhatsAppWidgetProps, WhatsAppWidget as default };
