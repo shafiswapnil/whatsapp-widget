@@ -2,7 +2,7 @@
 
 A customizable WhatsApp chat widget for websites that mimics the WhatsApp interface and connects visitors directly to your WhatsApp number. Perfect for businesses looking to provide instant customer support.
 
-![WhatsApp Widget Demo](./public/demo-gif.gif)
+<img src="./public/demo.gif" width="50%" alt="WhatsApp Widget Demo" style="display: block; margin-left: auto; margin-right: auto;">
 
 
 ## ✨ Features
