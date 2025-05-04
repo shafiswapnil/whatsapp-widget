@@ -11,14 +11,14 @@ interface WhatsAppWidgetProps {
   placeholder?: string;
 }
 
-export function WhatsAppWidget({
+const WhatsAppWidget = ({
   phoneNumber = "1234567890",
   avatar = "https://via.placeholder.com/60",
   name = "Customer Support",
   position = "Typically replies within an hour",
   welcomeMessage = "Hello! 👋 How can we help you today?",
   placeholder = "Type a message...",
-}: WhatsAppWidgetProps) {
+}: WhatsAppWidgetProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [inputText, setInputText] = useState("");
 
@@ -98,4 +98,7 @@ export function WhatsAppWidget({
       </button>
     </div>
   );
-}
+};
+
+export default WhatsAppWidget;
+export type { WhatsAppWidgetProps };
