@@ -1,8 +1,6 @@
 # WhatsApp Chat Widget
 
-A customizable WhatsApp chat widget for websites.
-
-![Demo](./public/demo.gif)
+A lightweight, customizable WhatsApp chat widget for React applications. Add a floating WhatsApp button to your website that opens a chat-like interface and redirects to WhatsApp with pre-filled messages.
 
 ## Installation
 
@@ -21,27 +19,36 @@ function App() {
   return (
     <WhatsAppWidget
       phoneNumber="1234567890"
-      message="Hello! 👋 How can I help you?"
-      companyName="Your Company"
-      // Optional props
-      buttonColor="#25D366"
-      position="right" // 'right' or 'left'
+      name="Support Team"
+      position="Online | Replies instantly"
+      welcomeMessage="Hello! 👋 How can I help you today?"
     />
   );
 }
-
-export default App;
 ```
 
 ## Props
 
-| Prop        | Type              | Required | Description                                     |
-| ----------- | ----------------- | -------- | ----------------------------------------------- |
-| phoneNumber | string            | Yes      | WhatsApp number including country code          |
-| message     | string            | Yes      | Default message to be sent                      |
-| companyName | string            | Yes      | Your company name                               |
-| buttonColor | string            | No       | Color of the WhatsApp button (default: #25D366) |
-| position    | 'left' \| 'right' | No       | Widget position (default: 'right')              |
+| Prop           | Type              | Required | Default                                | Description                            |
+| -------------- | ----------------- | -------- | -------------------------------------- | -------------------------------------- |
+| phoneNumber    | string            | Yes      | -                                      | WhatsApp number including country code |
+| name           | string            | No       | "Customer Support"                     | Name displayed in the widget header    |
+| position       | string            | No       | "Typically replies within an hour"     | Status text shown under the name       |
+| welcomeMessage | string            | No       | "Hello! 👋 How can we help you today?" | Initial message shown in the chat      |
+| placeholder    | string            | No       | "Type a message..."                    | Placeholder text for the input field   |
+| buttonColor    | string            | No       | "#25D366"                              | Color of the WhatsApp floating button  |
+| widgetPosition | 'left' \| 'right' | No       | "right"                                | Position of the widget on the screen   |
+| avatar         | string            | No       | "https://via.placeholder.com/60"       | URL of the avatar image                |
+
+## Features
+
+- 📱 Responsive design
+- 🎨 Customizable colors and positioning
+- 💬 Pre-filled messages
+- ⌨️ Input field for custom messages
+- 🔄 Seamless WhatsApp redirection
+- 🎯 Minimal bundle size
+- 🖼️ Custom avatar support
 
 ## License
 

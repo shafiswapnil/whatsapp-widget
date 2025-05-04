@@ -10,6 +10,6 @@ interface WhatsAppWidgetProps {
     buttonColor?: string;
     widgetPosition?: 'left' | 'right';
 }
-declare const WhatsAppWidget: ({ phoneNumber, avatar, name, position, welcomeMessage, placeholder, buttonColor, widgetPosition, }: WhatsAppWidgetProps) => React.JSX.Element;
+declare const WhatsAppWidget: React.FC<WhatsAppWidgetProps>;
 
 export { type WhatsAppWidgetProps, WhatsAppWidget as default };
